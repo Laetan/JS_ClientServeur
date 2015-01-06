@@ -1,0 +1,12 @@
+{
+    "name" : "AppConf",
+    "main" : "index.html",
+	"window" : {
+		"toolbar" : true,
+		"min_width": 1000,
+		"min_height": 700,
+		"max_width": 1000,
+		"max_height": 700,
+		"frame"  : true
+	}
+}

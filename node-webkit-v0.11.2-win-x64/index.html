@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr" ng-app>
+    <head>
+        <title>FriendApp</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!-- On ouvre la fenêtre à la largeur de l'écran -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- Intégration du CSS Bootstrap -->
+		<link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet" media="screen">
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen"> 
+		<link rel="stylesheet" href="css/style.css">
+    </head>
+<body>
+	<nav class="navbar navbar-default" role="navigation" id="nav">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#" style="color: red;"><strong>Apps</strong></a>
+		</div>
+		<div class="container-fluid">
+			<p class="navbar-text">Make friends and transfer files</p>
+			<form id="ip_form" class="navbar-form navbar-right"><label>Serveur IP : </label><input name="ip" type="text" placeholder="localhost"></input><button class="ip_change">Change IP</button></form>
+			<form class="navbar-form navbar-right">
+				<button  class="btn btn-warning" id="logout" style="display:none;" type="submit" data-toggle="modal" data-target=".bs-modal-sm-logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log Out</button>
+				<button  class="btn btn-danger" id="delete" style="display:none;" type="submit" data-toggle="modal" data-target=".bs-modal-sm-delete"><span class="glyphicon glyphicon-remove-sign"></span>&nbsp;Delete Profil</button>
+			</form>
+		</div><!-- /.container-fluid -->
+	</nav>
+	
+	<!-- LOGIN -->
+	<div class="modal fade bs-modal-sm-login" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title"><center><strong>Log-In</strong></center></h4>
+				</div>
+				<div class="modal-body">
+					<label>&nbsp;&nbsp;Username</label>
+					<input type="text"  class="user_name form-control" placeholder="Username"></input>
+					<label>&nbsp;&nbsp;Password</label>
+					<input type="password"  class="user_pwd form-control" placeholder="Password"></input>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="login_inp btn btn-info" data-dismiss="modal">Log-in</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal --
+	
+	<!-- LOGOUT -->
+	<div class="modal fade bs-modal-sm-logout" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">Message: </h4>
+				</div>
+				<div class="modal-body">
+					<p>Log Out ?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-warning logout_inp" data-dismiss="modal">Yes</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- SIGNUP -->
+	<div class="modal fade bs-modal-sm-signup" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title"><center><strong>Sign-up</strong></center></h4>
+				</div>
+				<div class="modal-body">
+					<label>&nbsp;&nbsp;Username</label>
+					<input type="text"  class="newUser_name form-control" placeholder="Username"></input>
+					<label>&nbsp;&nbsp;Password</label>
+					<input type="password"  class="newUser_pwd form-control" placeholder="Password"></input>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="signup_inp btn btn-primary" data-dismiss="modal">Sign-up</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<!-- DELETE -->
+	<div class="modal fade bs-modal-sm-delete" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">Message: </h4>
+				</div>
+				<div class="modal-body">
+					<p>Enter the information : </p>
+					<label>&nbsp;&nbsp;Username</label>
+					<input type="text"  class="deleteUser_name form-control" placeholder="Username"></input>
+					<label>&nbsp;&nbsp;Password</label>
+					<input type="password"  class="deleteUser_pwd form-control" placeholder="Password"></input></br>
+					<center><p><strong>Delete account ?</strong></p></center>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-danger delete_inp" data-dismiss="modal">Delete</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	<div class="row">
+		<!-- Colonne de gauche -->
+		<div class="col-md-3">
+			<span class="delete_user_res"></span>
+			<span class="logout_res"></span>
+			<span class="signup_res"></span>
+			<!-- STATS -->
+			<div class="well well-sm" style="box-shadow: 1px 1px 12px #555;">
+				<h4><center><strong>Live statistics</strong></center></h4>
+				<p><span class="glyphicon glyphicon-user stats_users"></span><span class="users_res"></span> registered users</p>
+				<p><span class="glyphicon glyphicon-open stats_upload"></span><span class="files_res"></span> files sent</p>
+			</div>
+		</div>
+		
+		<!-- Colonne centrale -->
+		<div class="col-md-5">
+			<center>
+				<button  class="btn btn-default btn-lg" id="login" type="submit" data-toggle="modal" data-target=".bs-modal-sm-login"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Log In</button>
+				<button  class="btn btn-primary btn-lg" id="signup" type="submit" data-toggle="modal" data-target=".bs-modal-sm-signup"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Sign Up</button>
+			</center>
+			<div id="send" style="display:none;">
+				<center><h3><strong>User : </strong><span class="user"></span></h3></center>
+				<input type="text" class="user_id" disabled="disabled" style="display:none;">
+				</br>
+				<div class="form-group">
+					<label>File input :</label>
+					<input id="file" type="file">
+					<p class="help-block">File to send.</p>
+					<!-- <label>Or drop file here : </label>-->
+				</div>
+				<!-- </br></br></br></br></br></br></br></br></br>-->
+				<p><strong>Friend : </strong>
+				<span class="liste_none"></span>
+				<select id="liste" style="display:none;" class="friend_list"></select></p>
+				</br>
+				<button  style="display:none;" id="send_btn" class="send_inp btn btn-default" type="submit"><span class="glyphicon glyphicon-send"></span>&nbsp;Send file</button>
+				<span class="send_res"></span>
+			</div>
+		</div>
+		
+		<!-- Colonne de droite -->
+		<div class="col-md-4" >
+			<!-- PROFIL -->
+			<div class="well well-sm" style="box-shadow: 1px 1px 8px white;">
+				<h4 style="overflow-wrap:break-word; color: #8A0808;"><center><strong>Profil</strong></center></h4>
+				<h5><center><strong>IP server</strong></center></h5>
+				<div id="ip_page" style="display:none;">
+					<p><strong>State : </strong><span class="info_res"></span></p>
+					<p><strong>IP : </strong>
+					<input type="text" class="ip" placeholder="New IP"></p>
+					<center><button type="button" class="setInfo_inp btn btn-default btn-xs">Update</button></center>
+					<span class="info_update_res"></span>
+				</div>
+			</div>
+			
+			<!-- FRIENDS -->
+			<div class="well well-sm" style="box-shadow: 1px 1px 8px white;" >
+				<h4 style="overflow-wrap:break-word; color: #0B0B3B;"><center><strong>Friends list</strong></center></h4>
+				<div id="friend_page" style="display:none;">
+					<center><button type="button" class="get_friends_inp btn btn-default btn-xs">Refresh</button></center>
+					<center><p class="help-block">Sometimes refresh</p></center>
+					<span class="friends_res"></span>
+					</br>
+					<select id="liste_add" style="display:none;" class="add_friend_list"></select>
+					<button  id="add_friends" style="display:none;" class="add_friends_inp btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add</button>
+					<span class="add_friend_res"></span>
+					</br>
+					<select id="liste_delete" style="display:none;" class="delete_friend_list"></select>
+					<button  id="delete_friends" style="display:none;" class="delete_friends_inp btn btn-default btn-sm" type="submit"><span class="glyphicon glyphicon-plus"></span>&nbsp;Delete friend</button>
+					<span class="delete_friend_res"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div id="drop" style="display:none;">
+		Drop here
+	</div>-->
+		
+	<!-- Ajout des scripts -->
+	<script src="bootstrap/js/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	<script src="js/appConf.js"></script>
+</body>
+</html>

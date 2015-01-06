@@ -1,0 +1,26 @@
+body{ 
+	height : 100%; 
+	background-image:linear-gradient(to right, white, #0B3861);
+	overflow: hidden;
+}
+#nav{
+	background-image:linear-gradient(to right, white, #CECEF6);
+	box-shadow: 1px 1px 12px #555;
+}
+
+#drop{
+	position: absolute;
+	top: 260px;  left: 250px;
+	width: 300px; height: 180px;
+	border-radius: 5px;
+	line-height: 150px;
+	border: 5px dashed black;
+	text-align: center;
+	font-size: 25px;
+	font-family: sans-serif;
+	color: #EEE;
+}
+#drop.hover{
+	color: #8dd0ff;
+	border-color: #8dd0ff;
+}
